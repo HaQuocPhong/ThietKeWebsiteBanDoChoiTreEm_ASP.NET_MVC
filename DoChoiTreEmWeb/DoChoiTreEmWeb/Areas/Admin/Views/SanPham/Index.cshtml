@@ -1,0 +1,103 @@
+﻿@using DoChoiTreEmWeb.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<DoChoiTreEmWeb.Models.SANPHAM>
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>..</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÝ SẢN PHẨM</h2>
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+    @Html.ActionLink("Thống kê số lượng sản phẩm theo thương hiệu","Thongke")
+</p>
+<table class="table">
+    <tr>
+        <th style="text-align:center; width:120px;">
+            Tên sản phẩm
+        </th>
+        <th style="text-align:center; width:200px;">
+            Mô tả
+        </th>
+        <th style="text-align:center; width:80px;">
+            Ảnh bìa
+        </th>
+        <th style="text-align:center; width:120px;">
+            Ngày cập nhật
+        </th>
+        <th style="text-align:center; width:90px;">
+            Số lượng
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th style="text-align:center; width:100px;">
+            Danh mục
+        </th>
+        <th style="text-align:center; width:120px;">
+            Thương hiệu
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Truncate(item.TenSP, 50)
+            </td>
+            <td>
+                @Html.Raw(Truncate(item.MoTa, 70).ToString())
+            </td>
+            <td>
+                <img src="~/Images/@item.AnhBia" style="width:50px;" />
+            </td>
+            <td>
+                @Html.FormatValue(@item.NgayCapNhat, "{0:dd/MM/yyyy}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongBan)
+            </td>
+            <td>
+                @Html.FormatValue(item.GiaBan, "{0:#,##0}")
+            <td>
+                @Html.DisplayFor(modelItem => item.DANHMUC.TenDM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THUONGHIEU.TenTH)
+            </td>
+            <td style="text-align:right">
+                <a href="@Url.Action("Edit", new { id=item.MaSP })" class="btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Details", new { id=item.MaSP })" class="btn btn-primary" role="button">Chi tiết</a>
+                <a href="@Url.Action("Delete",new { id=item.MaSP })" class="btn btn-danger" role="button">Xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+

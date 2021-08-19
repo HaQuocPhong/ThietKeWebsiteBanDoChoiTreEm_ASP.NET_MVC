@@ -1,0 +1,48 @@
+﻿@model DoChoiTreEmWeb.Models.THUONGHIEU
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>Bạn có chắc muốn xóa thương hiệu này?</h3>
+<div>
+    <h4>Thông tin thương hiệu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaTH)
+        </dd>
+
+        <dt>
+            Tên thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTH)
+        </dd>
+
+        <dt>
+            Xuất xứ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XuatXu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại trang quản lí thương hiệu", "Index")
+        </div>
+    }
+</div>
+

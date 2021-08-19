@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "SendMail";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h3>Hỗ trợ</h3>
+<div>
+    <form action="~/Mail/SendMail" name="SendMail"
+          method="post" enctype="multipart/form-data">
+        <div>Người gửi:</div>
+        <input name="Form" type="email" style="width:800px" required />
+        <div>Lỗi phát sinh</div>
+        <input name="Subject" type="text" style="width:800px" required />
+        <div>Mô tả chi tiết:</div>
+        <textarea name="Notes" rows="6" style="width:800px"></textarea>
+        <div>File đính kèm:</div>
+        <input name="Attachment" type="file" required />
+        <hr />
+        <input type="submit" value="Gửi phiếu hỗ trợ" />
+    </form>
+</div>
+

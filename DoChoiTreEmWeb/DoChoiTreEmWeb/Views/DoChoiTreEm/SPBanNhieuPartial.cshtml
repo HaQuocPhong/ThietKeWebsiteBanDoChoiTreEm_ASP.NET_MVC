@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DoChoiTreEmWeb.Models.SANPHAM>
+@{
+    ViewBag.Title = "Sản phẩm bán chạy";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h3 class="h3">Sản phẩm bán chạy</h3>
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#">
+                        <img class="pic-1" src="~/Images/@sp.AnhBia">
+                    </a>
+                    <ul class="social">
+                        <li><a href="@Url.Action("ChiTietSP", "DoChoiTreEM", new { id = sp.MaSP })" data-tip="Thông tin chi tiết"><i class="fa fa-search"></i></a></li>
+                        <li><a href="@Url.Action("ThemGioHang","GioHang",new {ms = sp.MaSP, url = Request.Url.ToString()})" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star disable"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">@sp.TenSP</a></h3>
+                    <a class="add-to-cart" href="@Url.Action("ThemGioHang","GioHang",new {ms = sp.MaSP, url = Request.Url.ToString()})">Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+            <br />
+        </div>
+
+        }
+    </div>
+    <br />
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DoChoiTreEmWeb.Models.SANPHAM>
+@using DoChoiTreEmWeb.Models;
+@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using (Html.BeginForm("Search", "Search", FormMethod.Get))
+{
+    <p style="text-align:center">
+        <input  stype="text" name="strSearch" value="@ViewBag.Search" placeholder="Nhập sản phẩm cần tìm ....." size="100" /><input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
+@{
+    if (Model != null)
+    {
+        <h2>KẾT QUẢ TÌM</h2>
+        foreach (var sp in Model)
+        {
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="~/Images/@sp.AnhBia">
+                        </a>
+                        <ul class="social">
+                            <li><a href="@Url.Action("ChiTietSP", "DoChoiTreEM", new { id = sp.MaSP })" data-tip="Thông tin chi tiết"><i class="fa fa-search"></i></a></li>
+                            <li><a href="@Url.Action("ThemGioHang","GioHang",new {ms = sp.MaSP, url = Request.Url.ToString()})" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star disable"></li>
+                    </ul>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">@sp.TenSP</a></h3>
+                        <a class="add-to-cart" href="@Url.Action("ThemGioHang","GioHang",new {ms = sp.MaSP, url = Request.Url.ToString()})">Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+

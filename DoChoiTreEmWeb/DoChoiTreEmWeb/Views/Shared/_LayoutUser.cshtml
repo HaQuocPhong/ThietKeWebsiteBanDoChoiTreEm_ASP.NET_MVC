@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <link rel="stylesheet" href="~/CSS/style.css" />
+    
+    <script src="~/Java Script/JavaScript.js"></script>
+
+
+
+</head>
+<body>
+
+    <!-- Phần Navbar -->
+    @Html.Action("NavPartial", "DoChoiTreEm")
+
+    <!-- Phần Slider -->
+    @Html.Action("SliderPartial", "DoChoiTreEm")
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                @Html.Action("DanhMucPartial", "DoChoiTreEm")
+                <br />
+                @Html.Action("ThuongHieuPartial", "DoChoiTreEm")
+                <br />
+                <ul class="list-group">
+                    <li class="list-group-item active" style="font-weight:bold; background-color:coral;text-align:center">CAM KẾT BÁN HÀNG</li>
+                    <p class="list-group-item" ><img src="~/Images/data_quality_30px.png" />Đồ chơi có mức giá tốt nhất thị trường, rẻ nhất so với chất lượng cam kết.</p>
+                    <p class="list-group-item"><img src="~/Images/data_quality_30px.png" />Tư vấn bán hàng chi tiết, đưa ra lời khuyên tốt nhất.</p>
+                    <p class="list-group-item"><img src="~/Images/data_quality_30px.png" />Bảo đảm đúng 100% chất liệu đồ chơi</p>
+                </ul>
+            </div>
+
+            <!-- Phần Sản Phẩm-->
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần footer -->
+        <section id="footer">
+            <div class="container">
+                <div class="row text-left text-xs-center text-sm-left text-md-left">
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="~/DoChoiTreEm/Index"><i class="fa fa-angle-double-right"></i>Trang Chủ</a></li>
+                            <li><a href="~/DoChoiTreEm/SPBanNhieuPartial"><i class="fa fa-angle-double-right"></i>Sản phẩm bán chạy</a></li>
+                            <li><a href="~/DoChoiTreEm/SPMoiPartial"><i class="fa fa-angle-double-right"></i>Sản phẩm mới</a></li>
+                            <li><a href="~/Mail/SendMail"><i class="fa fa-angle-double-right"></i>Hỗ trợ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Chính sách bảo mật</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Chính sách đổi trả</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Hướng đẫn mua hàng</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Câu hỏi thường gặp</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4" style="text-align:right;">
+                        <div class="card">
+                           <p> Đến với cửa hàng của chúng tôi:</p>
+                            <article class="card-body">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.483222034978!2d106.58482751488766!3d11.077318192117762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174cd9f3a44b155%3A0x0!2zMTHCsDA0JzM4LjQiTiAxMDbCsDM1JzEzLjMiRQ!5e0!3m2!1svi!2s!4v1626658597703!5m2!1svi!2s" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                        <ul class="list-unstyled list-inline social text-center">
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                        <p>
+                            Địa chỉ shop: DT748, ấp Bến liễu, xã Phú An, thị xã Bến Cát, Bình Dương<br />
+                            Điện thoại: 0869840210
+                        </p>
+                        <p>Công ty cổ phần Yêu Trẻ chuyên kinh doanh buôn bán sỉ và lẻ các loại đồ chơi, đồ chơi trẻ em, đồ chơi cho bé, đồ chơi trẻ em an toàn như: búp bê, đất nặn, xe điều khiển từ xa.</p>
+                        <p class="h6">Copyright © 2015-2016 by Dochoitreem.somee.com - All rights reserved.</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </section>
+</body>
+</html>

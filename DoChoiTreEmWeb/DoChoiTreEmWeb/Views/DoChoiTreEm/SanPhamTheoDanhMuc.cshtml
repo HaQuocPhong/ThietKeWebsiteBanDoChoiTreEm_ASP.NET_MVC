@@ -1,0 +1,57 @@
+﻿@using DoChoiTreEmWeb.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+@{
+    ViewBag.Title = "SanPhamTheoDanhMuc";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h3 class="h3">Sản phẩm theo danh mục</h3>
+<hr>
+<div class="row text-center">
+    @{
+        int i = 0;
+    }
+    @foreach (var sp in Model)
+    {
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="#">
+                                <img class="pic-1" src="~/Images/@sp.AnhBia">
+                            </a>
+                            <ul class="social">
+                                <li><a href="@Url.Action("ChiTietSP", "DoChoiTreEM", new { id = sp.MaSP })" data-tip="Thông tin chi tiết"><i class="fa fa-search"></i></a></li>
+                                <li><a href="@Url.Action("ThemGioHang","GioHang",new {ms = sp.MaSP, url = Request.Url.ToString()})" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star disable"></li>
+                        </ul>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">@sp.TenSP</a></h3>
+                            <a class="add-to-cart" href="@Url.Action("ThemGioHang","GioHang",new {ms = sp.MaSP, url = Request.Url.ToString()})">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+        }
+</div>
+
+@*Tạo liên kết các trang*@
+<div style="text-align:end">
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+</div>
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("SanPhamTheoDanhMuc", "DoChoiTreEm", new { iMaDM = ViewBag.MaDM, page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+

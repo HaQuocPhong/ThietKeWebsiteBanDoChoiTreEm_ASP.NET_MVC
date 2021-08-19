@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DoChoiTreEmWeb.Models.THUONGHIEU>
+
+<ul class="list-group">
+    <li class="list-group-item active" style="font-weight:bold; text-align:center">THƯƠNG HIỆU</li>
+    @foreach (var items in Model)
+    {
+        <a href="@Url.Action("SanPhamTheoThuongHieu","DoChoiTreEm",new {id = items.MaTH})"
+           class="list-group-item">@items.TenTH</a>
+        // <div class="list-group-item">
+        //       @Html.ActionLink(items.TenNXB,"SachTheoNhaXuatBan",new {nxb = items.MaNXB},"SachOnline")
+        //   </div>
+    }
+</ul>

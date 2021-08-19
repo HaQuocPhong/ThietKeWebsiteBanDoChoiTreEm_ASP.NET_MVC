@@ -1,0 +1,63 @@
+﻿@using DoChoiTreEmWeb.Models
+@{
+    KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+}
+<div style="background-color: #3E4999">
+    <p style="text-align:right; color:white;margin: 10px 30px">HOTLINE: 19005678 - Hệ thống cửa hàng uy tín</p>
+</div>
+
+<div class="container">
+    <div class="navbar-header">
+        <img src="~/Images/logo.png" />
+    </div>
+    @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "navbar-form navbar-left", @role = "search" }))
+    {
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Tìm kiếm" name="strSearch">
+        </div>
+        <button type="submit" class="btn btn-default">Tìm</button>
+    }
+    <ul class="nav navbar-nav navbar-right">
+        <li> @Html.Action("GioHangPartial", "GioHang")</li>
+        @if (Session["TaiKhoan"] == null)
+        {
+            <li><a href="~/User/DangKy"><span></span><img src="~/Images/add_user_male_30px.png" /> Đăng kí</a></li>
+            <li><a href="~/User/DangNhap"><span></span><img src="~/Images/user_30px.png" />Đăng nhập</a></li>
+        }
+        else
+        {
+            <li><a href=""><span></span><img src="~/Images/user_30px.png" />Xin chào:@kh.HoTen</a></li>
+            <li><a href="@Url.Action("DangXuat","User")"><span></span><img src="~/Images/login_30px.png" />Đăng Xuất</a></li>
+        }
+    </ul>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a href="~/DoChoiTreEm/Index">TRANG CHỦ</a></li>
+                <li><a href="~/DoChoiTreEm/SPBanNhieuPartial">SẢN PHẨM BÁN CHẠY</a></li>
+                <li><a href="~/DoChoiTreEm/SPMoiPartial">SẢN PHẨM MỚI</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        DANH MỤC SẢN PHẨM<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/1">Đồ chơi vận động</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/2">Đồ chơi xếp hình & lắp ráp</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/3">Đồ chơi trí tuệ</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/4">Đồ chơi gỗ</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/5">Phương tiẹn giao thông</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/6">Búp bê</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/7">Đồ chơi âm nhạc</a></li>
+                        <li><a href="~/DoChoiTreEm/SanPhamTheoDanhMuc/8">Robot</a></li>
+                    </ul>
+                </li>
+                <li><a href="~/DoChoiTreEm/ThongTinCuaHang">THÔNG TIN CỬA HÀNG</a></li>
+                <li><a href="#">CHÍNH SÁCH</a></li>
+                <li><a href="~/DoChoiTreEm/TinTuc">TIN TỨC</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>

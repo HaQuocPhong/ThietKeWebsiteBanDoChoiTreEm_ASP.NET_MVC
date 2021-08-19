@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="~/CSS/structure.css" />
+    <link rel="stylesheet" href="~/CSS/reset.css" />
+</head>
+<body>
+    <form action="~/Admin/Home/Login" method="post" class="box login">
+        <fieldset class="boxBody">
+            <h4 style="text-align:center; font-weight:bold">ĐĂNG NHẬP ADMIN</h4>
+            <label>Tài khoản</label>
+            <input type="text" tabindex="1" name="UserName" placeholder="Type your username" required />
+            <label>Mật khẩu</label>
+            <input type="password" tabindex="2" name="Password" placeholder="Type your Password" required />
+            <p style="font-size:initial; color:red; margin:0px;">@ViewBag.ThongBao</p>
+        </fieldset>
+        <footer>
+            @Html.CheckBox("remember")<span style="font-style:italic">Nhớ thông tin</span>
+            <input type="submit" class="btnLogin" value="Đăng nhập" tabindex="4" />
+        </footer>
+    </form>
+</body>
+</html>

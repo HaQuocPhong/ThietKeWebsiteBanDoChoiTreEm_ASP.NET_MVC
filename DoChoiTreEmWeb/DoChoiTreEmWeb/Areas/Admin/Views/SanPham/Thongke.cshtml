@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DoChoiTreEmWeb.Models.ReporInfo>
+@{
+    ViewBag.Title = "Thongke";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>THỐNG KÊ SẢN PHẨM THEO THƯƠNG HIỆU</h2>
+<table border="1">
+    <tr style="background-color:burlywood; font-weight:bold;">
+        <td>Mã thương hiệu</td>
+        <td>Số sản phẩm</td>
+        <td>Tổng sản phẩm</td>
+    </tr>
+    @foreach (var sp in Model)
+    {
+        <tr>
+            <td>@sp.Id</td>
+            <td>@sp.Count</td>
+            <td>@sp.Sum</td>
+        </tr>
+    }
+</table>
+<br />
+
+

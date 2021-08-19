@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style type="text/css">
+    h2 {
+        color: red;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    .tensach {
+        background-color: ghostwhite;
+    }
+
+    div > img.ima {
+        border: 0.5px solid black;
+        border-radius: 4px;
+        padding: 5px;
+        width: 300px;
+    }
+
+    .addtocard {
+        float: right;
+    }
+
+    .giaban {
+        text-align: right;
+    }
+
+    .d {
+        color: red;
+        text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+        font-size: x-large;
+    }
+
+    .ngaycapnhat {
+        text-align: right;
+    }
+
+    div.motasach {
+        background-color: ghostwhite;
+    }
+</style>
+<h3>Thông tin sản phẩm</h3>
+<div class="thumbnail">
+    <h2 class="tensach text-center">
+        @Model.TenSP
+    </h2>
+    <hr />
+    <img class="ima" src="~/Images/@Model.AnhBia" alt=" @Model.TenSP" />
+    <hr />
+    <div class="motasach">
+        <p>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </p>
+        <p class="ngaycapnhat text-center">Ngày Cập Nhật: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</p>
+        <p class="giaban text-center">Giá bán: <span class="d">@Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ</span></p>
+        <p class="addtocard text-center">
+            <a href="@Url.Action("ThemGioHang","GioHang",new {ms = Model.MaSP, url = Request.Url.ToString()})" class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Thêm vào giỏ hàng
+            </a>
+        </p>
+    </div>
+</div>
+
+<!---Đánh giá-->
+<div class="container">
+    <div class="row">
+        <p>Đánh giá sản phẩm</p>
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Kinda bad">4 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Kinda bad">3 stars</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+        </div>
+    </div>
+</div>
+
+
+<!--Comment face-->
+<style type="text/css">
+    .fb-comment-comment {
+        width: 500px;
+    }
+</style>
+<div class="fb-comment-comment" data-href="{your-comment-url}"></div>
+
+<!-- CORRECT -->
+<div class="fb-comment-comment" data-href="{your-comment-url}" data-width="500"></div>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6"></script>
+
+<!-- Your embedded comments code -->
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="800" data-numposts="5"></div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DoChoiTreEmWeb.Models.SANPHAM>
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+
+
+<br />
+<img src="~/Images/phu-kien-xinh-cho-be-gai-1.jpg" />
+<br />
+@Html.Action("SPMoi", "DoChoiTreEm")
+<br />
+<img src="~/Images/cat-dong-luc-1.jpg" />
+<br />
+@Html.Action("SPBanNhieu", "DoChoiTreEm")
+
+
+
+
+
+
+
+
+
+
+
+
+

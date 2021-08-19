@@ -1,0 +1,41 @@
+﻿@model DoChoiTreEmWeb.Models.DANHMUC
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>Bạn có chắc muốn xóa danh mục này?</h3>
+<div>
+    <h4>Thông tin danh mục</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã danh mục
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDM)
+        </dd>
+
+        <dt>
+            Tên danh mục
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDM)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại trang quản lí danh mục", "Index")
+        </div>
+    }
+</div>
+
